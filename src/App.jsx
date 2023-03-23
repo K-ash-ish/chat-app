@@ -25,11 +25,8 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route element={<AppLayout />}>
-        <Route path="/" element={<Login />} />
-        <Route
-          path="chatroom"
-          element={user.username ? <ChatRoom /> : <Login />}
-        />
+        <Route path="/" element={<ChatRoom />} />
+        <Route path="/login" element={<Login />} />
       </Route>
     )
   );
