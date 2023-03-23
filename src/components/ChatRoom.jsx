@@ -13,12 +13,18 @@ function ChatRoom() {
       <div className=" pl-4 flex flex-col justify-between w-full h-full md:w-9/12">
         <h1 className="text-center my-2 text-lg font-semibold">RoomName</h1>
         <div className=" h-5/6 overflow-y-scroll">
-          <p className="text-right bg-blue-300 my-2 text-lg mx-1 p-3  rounded-md ">
-            Hello
-          </p>
-          <p className="text-left bg-green-300 my-2 text-lg mx-1 p-3 rounded-md">
-            Hello
-          </p>
+          <div className="min-h-[80px] flex flex-col items-end mr-2 justify-around">
+            <p className="text-xs  font-semibold mt-1 mr-2">Me</p>
+            <p className="text-right bg-blue-300 my-2 text-lg mx-1 p-3  rounded-md ">
+              Hello
+            </p>
+          </div>
+          <div className="min-h-[80px] flex flex-col items-start justify-around">
+            <p className="text-xs  font-semibold mt-1 ml-1">UserName</p>
+            <p className="text-left bg-green-300 my-2 text-lg mx-1 p-3 rounded-md">
+              Hello
+            </p>
+          </div>
         </div>
         <div className="my-2 flex justify-around items-center">
           <input
