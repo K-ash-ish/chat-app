@@ -9,7 +9,7 @@ function Header() {
       <h1 className="font-bold text-3xl">
         Chat<span className="text-green-500">Hub</span>
       </h1>
-      <h1 className="  text-gray-500">
+      <h1 className=" capitalize text-gray-500">
         <FontAwesomeIcon icon={faUser} /> {user.username}
       </h1>
     </nav>

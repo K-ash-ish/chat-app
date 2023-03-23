@@ -1,14 +1,18 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../Context/User";
 
 function Login() {
   const [value, setValue] = useState("");
+  const navigate = useNavigate();
   const user = useUserContext();
+
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
         user.setUserInput(value);
+        navigate("/chatroom");
       }}
       className="absolute top-1/4 left-[20%] md:left-[35%] border-2 border-green-300 w-[400px] mx-auto my-0 h-[400px] flex flex-col justify-center items-center"
     >
