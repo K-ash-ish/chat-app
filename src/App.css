@@ -1,3 +1,14 @@
 .chat-rooms::-webkit-scrollbar {
   width: 5px;
 }
+.chats::-webkit-scrollbar {
+  width: 5px;
+}
+.chats::-webkit-scrollbar-thumb {
+  background-color: rgb(134 239 172);
+  border-radius: 10px;
+}
+.chats::-webkit-scrollbar-track {
+  /* border: 1px solid red;
+  width: 50px; */
+}

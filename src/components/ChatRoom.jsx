@@ -1,15 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import supabase from "../config/supabase";
 import RoomList from "./RoomList";
 import { v4 as uuidv4 } from "uuid";
 import { useUserContext } from "../Context/User";
 import { useRoomContext } from "../Context/CurrentRoom";
+
 function ChatRoom() {
   const [input, setInput] = useState("");
+  const messageEndRef = useRef(null);
   const [fetchMessages, setFetchMessages] = useState(null);
   const currentUser = useUserContext();
   const currentRoom = useRoomContext();
-  
+
   // const currentUser = {
   //   username: "kashish",
   // };
@@ -35,6 +37,9 @@ function ChatRoom() {
       )
       .subscribe();
   }, [currentRoom.room]);
+  useEffect(() => {
+    messageEndRef.current?.scrollIntoView();
+  }, [fetchMessages]);
   const sendMessage = () => {
     const sendData = async () => {
       const { data, error } = await supabase.from("chat_data").insert([
@@ -44,8 +49,6 @@ function ChatRoom() {
           chatroom: currentRoom.room,
         },
       ]);
-
-      console.log(error);
     };
     sendData();
     setInput("");
@@ -54,19 +57,19 @@ function ChatRoom() {
     <section className="flex flex-row justify-between  w-full h-[85vh] border-2">
       <RoomList />
       <div className=" pl-4 flex flex-col justify-between w-full h-full md:w-9/12">
-        <h1 className="text-center my-2 text-lg font-semibold">
+        <h1 className="text-center my-2 text-lg font-semibold capitalize">
           {currentRoom?.room || "Select Room"}
         </h1>
-        <div className=" h-5/6 overflow-y-scroll">
+        <div className="chats h-5/6 overflow-x-hidden overflow-y-scroll">
           {fetchMessages?.map((user) => {
             if (user.username === currentUser.username) {
               return (
                 <div
                   key={uuidv4()}
-                  className="min-h-[80px] flex flex-col items-end mr-2 justify-around"
+                  className="min-h-[80px] flex flex-col items-end mr-2 justify-around "
                 >
                   <p className="text-xs  font-semibold mt-1 mr-2">Me</p>
-                  <p className="text-right bg-blue-300 my-2 text-lg mx-1 p-3  rounded-md ">
+                  <p className="text-right bg-blue-300 my-2 text-lg mx-1 p-3  rounded-md  w-80 break-words">
                     {user.messages}
                   </p>
                 </div>
@@ -80,13 +83,14 @@ function ChatRoom() {
                   <p className="text-xs  font-semibold mt-1 ml-1">
                     {user.username}
                   </p>
-                  <p className="text-left bg-green-300 my-2 text-lg mx-1 p-3 rounded-md">
+                  <p className="text-left bg-green-300 my-2 text-lg mx-1 p-3 rounded-md w-80 break-words">
                     {user.messages}
                   </p>
                 </div>
               );
             }
           })}
+          <div ref={messageEndRef} />
         </div>
         {currentUser.username ? (
           <div className="my-2 flex justify-around items-center">
