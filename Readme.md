@@ -4,6 +4,6 @@
 
 - Developed using ReactJS, Supabase, TailwindCss.
 
-* Used supabase for the first time for this project.
+* Used supabase for the first time while building this project.
 
 ![](chrome-capture-2023-2-24.gif)
