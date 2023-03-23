@@ -1,12 +1,12 @@
 import "./App.css";
+import ChatRoom from "./components/ChatRoom";
 import Header from "./components/Header";
-import RoomList from "./components/RoomList";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <RoomList />
+      <ChatRoom />
     </div>
   );
 }
