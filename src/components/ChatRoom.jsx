@@ -31,6 +31,7 @@ function ChatRoom() {
         "postgres_changes",
         { event: "*", schema: "*", table: "chat_data" },
         (payload) => {
+              onClick={sendMessage}
           setFetchMessages((prevState) => [...prevState, payload.new]);
         }
       )
@@ -39,7 +40,8 @@ function ChatRoom() {
   useEffect(() => {
     messageEndRef.current?.scrollIntoView();
   }, [fetchMessages]);
-  const sendMessage = () => {
+  const sendMessage = (e) => {
+    e.preventDefault();
     const sendData = async () => {
       const { data, error } = await supabase.from("chat_data").insert([
         {
@@ -92,7 +94,10 @@ function ChatRoom() {
           <div ref={messageEndRef} />
         </div>
         {currentUser.username && currentRoom.room != null ? (
-          <div className="my-2 flex justify-around items-center">
+          <form
+            onSubmit={sendMessage}
+            className="my-2 flex justify-around items-center"
+          >
             <input
               type="text"
               value={input}
@@ -101,12 +106,12 @@ function ChatRoom() {
             />
 
             <button
-              onClick={sendMessage}
+              type="submit"
               className="ml-2 rounded-md md:p-4 p-2 bg-green-300"
             >
               Send
             </button>
-          </div>
+          </form>
         ) : (
           <h1 className="text-center">
             Please create a user first or Select a room
