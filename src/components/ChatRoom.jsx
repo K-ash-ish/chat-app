@@ -32,7 +32,12 @@ function ChatRoom() {
       .channel("any")
       .on(
         "postgres_changes",
-        { event: "*", schema: "*", table: "chat_data" },
+        {
+          event: "*",
+          schema: "*",
+          table: "chat_data",
+          filter: `chatroom=eq.${currentRoom.room}`,
+        },
         (payload) => {
           setFetchMessages((prevState) => [...prevState, payload.new]);
         }
