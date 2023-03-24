@@ -11,7 +11,6 @@ function ChatRoom() {
   const [fetchMessages, setFetchMessages] = useState(null);
   const currentUser = useUserContext();
   const currentRoom = useRoomContext();
-
   // const currentUser = {
   //   username: "kashish",
   // };
@@ -69,7 +68,7 @@ function ChatRoom() {
                   className="min-h-[80px] flex flex-col items-end mr-2 justify-around "
                 >
                   <p className="text-xs  font-semibold mt-1 mr-2">Me</p>
-                  <p className="text-right bg-blue-300 my-2 text-lg mx-1 p-3  rounded-md  w-80 break-words">
+                  <p className="text-right bg-blue-300 my-2 text-lg mx-1 p-3  rounded-md  md:w-80 break-words">
                     {user.messages}
                   </p>
                 </div>
@@ -83,7 +82,7 @@ function ChatRoom() {
                   <p className="text-xs  font-semibold mt-1 ml-1">
                     {user.username}
                   </p>
-                  <p className="text-left bg-green-300 my-2 text-lg mx-1 p-3 rounded-md w-80 break-words">
+                  <p className="text-left bg-green-300 my-2 text-lg mx-1 p-3 rounded-md md:w-80 break-words">
                     {user.messages}
                   </p>
                 </div>
@@ -92,7 +91,7 @@ function ChatRoom() {
           })}
           <div ref={messageEndRef} />
         </div>
-        {currentUser.username ? (
+        {currentUser.username && currentRoom.room != null ? (
           <div className="my-2 flex justify-around items-center">
             <input
               type="text"
@@ -109,7 +108,9 @@ function ChatRoom() {
             </button>
           </div>
         ) : (
-          <h1 className="text-center">Please create a user first</h1>
+          <h1 className="text-center">
+            Please create a user first or Select a room
+          </h1>
         )}
       </div>
     </section>
