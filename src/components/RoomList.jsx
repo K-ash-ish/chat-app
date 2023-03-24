@@ -68,7 +68,7 @@ function RoomList() {
                   currentRoom.selectRoom(e.target.textContent);
                 }}
                 key={uuidv4()}
-                className="border-b-2 cursor-pointer capitalize my-3 text-center break-words md:text-base text-sm"
+                className="bg-emerald-300 md:rounded-md rounded-sm cursor-pointer capitalize my-3 text-center break-words md:text-base text-sm"
               >
                 {room.chatroom_name}
               </li>
