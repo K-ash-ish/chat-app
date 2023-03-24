@@ -31,7 +31,6 @@ function ChatRoom() {
         "postgres_changes",
         { event: "*", schema: "*", table: "chat_data" },
         (payload) => {
-              onClick={sendMessage}
           setFetchMessages((prevState) => [...prevState, payload.new]);
         }
       )
@@ -103,6 +102,7 @@ function ChatRoom() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               className=" p-4 border-2 md:h-14 h-12 w-5/6 "
+              required
             />
 
             <button
