@@ -37,7 +37,6 @@ function RoomList() {
     fetchChatRooms();
   }, []);
   useEffect(() => {
-    console.log("asdf");
     supabase
       .channel("any")
       .on(

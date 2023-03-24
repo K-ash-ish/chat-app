@@ -25,6 +25,9 @@ function ChatRoom() {
       }
     };
     fetchChatData();
+  }, [currentRoom.room]);
+
+  useEffect(() => {
     supabase
       .channel("any")
       .on(
@@ -35,8 +38,6 @@ function ChatRoom() {
         }
       )
       .subscribe();
-  }, [currentRoom.room]);
-  useEffect(() => {
     messageEndRef.current?.scrollIntoView();
   }, [fetchMessages]);
   const sendMessage = (e) => {
