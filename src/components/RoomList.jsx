@@ -27,6 +27,29 @@ function RoomList() {
       )
       .subscribe();
   }, []);
+  useEffect(() => {
+    const fetchChatRooms = async () => {
+      const { data, error } = await supabase.from("chatroom-data").select();
+      if (data) {
+        setChatRooms(data);
+      }
+    };
+    fetchChatRooms();
+  }, []);
+  useEffect(() => {
+    console.log("asdf");
+    supabase
+      .channel("any")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "*", table: "chatroom-data" },
+        (payload) =>
+          setChatRooms((prevState) => {
+            return [...prevState, payload.new];
+          })
+      )
+      .subscribe();
+  }, [chatRooms]);
 
   const addNewRoom = () => {
     const sendData = async () => {
