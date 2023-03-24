@@ -45,21 +45,25 @@ function RoomList() {
   return (
     <aside className="pt-3">
       <div className="my-2 w-28 md:w-72 md:ml-6 border-r-2 pr-2 ">
-        <div className="flex flex-col justify-center items-center md:items-stretch">
+        <form
+          onSubmit={addNewRoom}
+          className="flex flex-col justify-center items-center md:items-stretch"
+        >
           <input
             type="text"
             className="my-1 border-2 w-full md:p-2 p-1"
             placeholder="Room name"
             onChange={(e) => setRoomName(e.target.value)}
+            required
           />
           <button
             className="my-2 border-2 border-emerald-500 md:text-base text-sm"
-            onClick={addNewRoom}
+            type="submit"
           >
             Create New Room
           </button>
           <h1 className="my-1 text-center font-medium">Room List</h1>
-        </div>
+        </form>
         <ul className="chat-rooms overflow-y-scroll  h-[400px]">
           {chatRooms?.map((room) => {
             return (
