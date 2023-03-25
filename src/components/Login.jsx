@@ -34,7 +34,7 @@ function Login() {
           navigate("/");
         }
       }}
-      className="absolute top-1/4 left-[20%] md:left-[35%] border-2 border-green-300 w-[400px] mx-auto my-0 h-[400px] flex flex-col justify-center items-center"
+      className=" border-2 border-green-300 w-[400px] mx-auto my-0 h-[400px] flex flex-col justify-center items-center"
     >
       {userPresent ? <h1 className="text-red-400">UserExist</h1> : null}
       <input
