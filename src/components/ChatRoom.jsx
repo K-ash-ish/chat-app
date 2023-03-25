@@ -60,10 +60,10 @@ function ChatRoom() {
     setInput("");
   };
   return (
-    <section className="flex flex-row justify-between  w-full h-[85vh] border-2">
+    <section className="flex flex-row justify-between  w-full h-[85vh] my-2 ">
       <RoomList />
-      <div className=" pl-4 flex flex-col justify-between w-full h-full md:w-9/12">
-        <h1 className="text-center my-2 text-lg font-semibold capitalize">
+      <div className="pl-4 mr-2 flex flex-col justify-between w-full h-full md:w-9/12">
+        <h1 className="text-center underline decoration-red-400 underline-offset-2 uppercase my-2 text-lg font-semibold ">
           {currentRoom?.room || "Select Room"}
         </h1>
         <div className="chats h-5/6 overflow-x-hidden overflow-y-scroll">
@@ -84,7 +84,7 @@ function ChatRoom() {
               return (
                 <div
                   key={uuidv4()}
-                  className="min-h-[80px] flex flex-col items-start justify-around"
+                  className="min-h-[80px] flex flex-col items-start justify-around "
                 >
                   <p className="text-xs  font-semibold mt-1 ml-1">
                     {user.username}

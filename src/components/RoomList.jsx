@@ -66,7 +66,7 @@ function RoomList() {
   };
   return (
     <aside className="pt-3">
-      <div className="my-2 w-28 md:w-72 md:ml-6 border-r-2 pr-2 ">
+      <div className="my-2 w-28 md:w-72 md:ml-6 border-2 border-blue-300 p-2 ">
         <div className="flex flex-col justify-center items-center md:items-stretch">
           <input
             type="text"

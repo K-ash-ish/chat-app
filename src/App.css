@@ -8,3 +8,6 @@
   background-color: rgb(134 239 172);
   border-radius: 10px;
 }
+.chats::-webkit-scrollbar-track {
+  border-right: 2px solid #7fb9fc;
+}
