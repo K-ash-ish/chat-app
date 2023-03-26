@@ -124,6 +124,7 @@ function ChatRoom() {
           </h1>
         )}
       </div>
+      )
     </section>
   );
 }

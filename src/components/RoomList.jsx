@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import supabase from "../config/supabase";
 import { useRoomContext } from "../Context/CurrentRoom";
+import { RoomListShimmer } from "./Shimmer";
 
 function RoomList() {
-  const [chatRooms, setChatRooms] = useState();
+  const [chatRooms, setChatRooms] = useState([]);
   const [roomName, setRoomName] = useState("");
   const currentRoom = useRoomContext();
   useEffect(() => {
@@ -64,6 +65,9 @@ function RoomList() {
     sendData();
     setRoomName("");
   };
+  if (chatRooms.length === 0) {
+    return <RoomListShimmer />;
+  }
   return (
     <aside className="pt-3 bg-slate-200">
       <div className=" w-28 md:w-72 md:ml-6  border-r-2  p-2 ">
