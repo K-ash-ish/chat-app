@@ -7,8 +7,8 @@ import {
 
 function Footer() {
   return (
-    <footer className="border-t-2 relative  py-2 w-full  bottom-0 flex  justify-around items-center">
-      <div className=" social-links text-3xl my-1  text-emerald-400">
+    <footer className="bg-gray-200 border-t-2 relative  py-2 w-full  bottom-0 flex  justify-around items-center">
+      <div className=" social-links md:text-3xl text-lg my-1  text-emerald-400">
         <a
           className=" px-6"
           href="https://github.com/K-ash-ish"
@@ -34,7 +34,7 @@ function Footer() {
           <FontAwesomeIcon icon={faTwitter} />
         </a>
       </div>
-      <p className="text-lg text-center">Built with ❤️ by Kashish</p>
+      <p className="md:text-lg text-xs text-center">Built with ❤️ by Kashish</p>
     </footer>
   );
 }

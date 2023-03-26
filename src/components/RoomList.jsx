@@ -65,12 +65,12 @@ function RoomList() {
     setRoomName("");
   };
   return (
-    <aside className="pt-3">
-      <div className="my-2 w-28 md:w-72 md:ml-6 border-2 border-blue-300 p-2 ">
+    <aside className="pt-3 bg-slate-200">
+      <div className=" w-28 md:w-72 md:ml-6  border-r-2  p-2 ">
         <div className="flex flex-col justify-center items-center md:items-stretch">
           <input
             type="text"
-            className="my-1 border-2 w-full md:p-2 p-1"
+            className="my-1 text-base border-2 w-full md:p-2 p-1"
             placeholder="Room name"
             onChange={(e) => setRoomName(e.target.value)}
           />
